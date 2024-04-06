@@ -2,20 +2,20 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://JosephGoIt.github.io/javascript-team-project",
+  "homepage": "https://JosephGoIt.github.io/br-07-javascript",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /javascript-team-project/"
+    "build": "parcel build src/*.html --public-url /br-07-javascript/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JosephGoit/javascript-team-project.git"
+    "url": "git+https://github.com/JosephGoit/br-07-javascript.git"
   },
   "keywords": [],
   "author": "Joseph <spongkj@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JosephGoIt/javascript-team-project/issues"
+    "url": "https://github.com/JosephGoIt/br-07-javascript/issues"
   },
   "dependencies": {
     "aos": "^3.0.0-beta.6",
