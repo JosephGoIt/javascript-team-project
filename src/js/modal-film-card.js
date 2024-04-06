@@ -1,4 +1,5 @@
 import closeBtnIcon from '../images/icon/symbol-defs.svg';
+
 const BASE_URL = "https://api.themoviedb.org";
 const API_KEY = "9d52264b8376313698d7d20c165a8537";
 const TRENDING_MOVIES_ENDPOINT = "/3/trending/movie/day";
@@ -10,8 +11,6 @@ const refs = {
   filmModal: document.querySelector('[data-modal]'),
   body: document.querySelector('body'),
 };
-
-let filmDetails = {};
 
 refs.galleryBox.addEventListener('click', onGalleryBoxClick);
 
@@ -25,42 +24,27 @@ async function onGalleryBoxClick(event) {
   const filmId = Number(event.target.closest('.card').id);
   console.log(filmId);
 
-  filmDetails = await fetchFilmDetailsById(filmId);
-
-  console.log(filmDetails);
-
-
-  clearFilmModalMarkup();
-  renderFilmModal(filmDetails);
+  try {
+    const filmDetails = await fetchFilmDetailsById(filmId);
+    console.log(filmDetails);
+    clearFilmModalMarkup();
+    renderFilmModal(filmDetails);
+    onOpenModal();
+    window.addEventListener('keydown', onEscKeyPress);
+  } catch (error) {
+    console.error(error);
+  }
 
   const modalButtonsRefs = {
     closeBtn: document.querySelector('[button-modal-close]'),
-    addQueueBtn: document.querySelector('[button-add-queue]'),
-    addWatchBtn: document.querySelector('[button-add-watch]'),
+    // addQueqeBtn: document.querySelector('[button-add-queue]'),
+    // addWatchBtn: document.querySelector('[button-add-watch]'),
   };
 
   modalButtonsRefs.closeBtn.addEventListener('click', onCloseModal);
-  // modalButtonsRefs.addQueueBtn.addEventListener('click', onAddQueueBtn);
+  // modalButtonsRefs.addQueqeBtn.addEventListener('click', onAddQueqeBtn);
   // modalButtonsRefs.addWatchBtn.addEventListener('click', onAddWatchBtn);
 
-  // const watchedMovies = getMovies('watched') || [];
-  // const moviesInQueue = getMovies('queue') || [];
-  // const isMovieWatched = watchedMovies.some(
-  //   movie => movie.id === filmDetails.id
-  // );
-  // const isMovieInQueue = moviesInQueue.some(
-  //   movie => movie.id === filmDetails.id
-  // );
-  // if (isMovieInQueue) {
-  //   disableBtn(modalButtonsRefs.addQueueBtn);
-  // }
-
-  // if (isMovieWatched) {
-  //   disableBtn(modalButtonsRefs.addWatchBtn);
-  // }
-
-  onOpenModal();
-  window.addEventListener('keydown', onEscKeyPress);
 }
 
 function onOpenModal() {
@@ -178,34 +162,30 @@ function clearFilmModalMarkup() {
 
 function renderFilmModal(data) {
   const filmModalMarkup = createFilmModalMarkup(data);
+  console.log(filmModalMarkup);
   refs.filmModal.insertAdjacentHTML('beforeend', filmModalMarkup);
-}
-
-function getMovies(key) {
-  // Implement this function or replace it with appropriate logic
-}
-
-function disableBtn(btn) {
-  // Implement this function or remove the reference if not needed
-}
-
-function disableScroll() {
-  // Implement this function to disable scrolling
-}
-
-function enableScroll() {
-  // Implement this function to enable scrolling
 }
 
 const fetchFilmDetailsById = async (filmId) => {
   try {
     const response = await fetch(`${BASE_URL}/3/movie/${filmId}?api_key=${API_KEY}`);
     if (!response.ok) {
-        throw new Error('Failed to fetch movies');
+      throw new Error('Failed to fetch movies');
     }
     return await response.json();
-    } catch (error) {
-    console.error(error);
-    return []; // Return an empty array in case of error
-    }
+  } catch (error) {
+    throw new Error(`Failed to fetch movie details: ${error.message}`);
+  }
 };
+
+function disableScroll() {
+  let paddingOffset = window.innerWidth - refs.body.offsetWidth + 'px';
+  refs.body.classList.add('disable-scroll');
+  refs.body.style.paddingRight = paddingOffset;
+}
+
+function enableScroll() {
+  refs.body.classList.remove('disable-scroll');
+  refs.body.style.paddingRight = 0;
+}
+
