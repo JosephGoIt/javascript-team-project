@@ -11,10 +11,135 @@
             </svg>
           </li>
           <li class="footer-item">
-            <button class="team-modal">by GoIT Students</button>
+            <!-- Trigger/Open The Modal -->
+            <button class="modal-button">by GoIT Students</button>
           </li>
         </ul>
       </div>
     </ul>
   </div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h4>The Team </h4>
+
+    <div class="card">
+      <img class="card-img-top" src="/src/images/foto.jpg" alt="Card image">
+      <div class="card-body">
+        <h4 class="card-title">Joseph Camacho</h4>
+        <p>Team Leader</p>
+        <p class="socials">
+          <i class="fa fa-facebook"></i>
+          <i class="fa fa-twitter"></i>
+          <i class="fa fa-pinterest"></i>
+          <i class="fa fa-linkedin"></i>
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img class="card-img-top" src="/src/images/foto.jpg" alt="Card image">
+      <div class="card-body">
+        <h4 class="card-title">Joseph Camacho</h4>
+        <p>Team Leader</p>
+        <p class="socials">
+          <i class="fa fa-facebook"></i>
+          <i class="fa fa-twitter"></i>
+          <i class="fa fa-pinterest"></i>
+          <i class="fa fa-linkedin"></i>
+        </p>
+      </div>
+    </div>
+
+    <div class="single-box">
+      <div class="header-area img1"></div>
+      <div class="body-area">
+        <h3>Roel Edeleon</h3>
+        <h4>Developer</h4>
+        <p class="socials"><i class="fa fa-facebook"></i> <i class="fa fa-twitter"></i> <i class="fa fa-pinterest"></i>
+          <i class="fa fa-linkedin"></i>
+        </p>
+      </div>
+    </div>
+
+    <div class="single-box">
+      <div class="header-area img1"></div>
+      <div class="body-area">
+        <h3>Tin Pasco</h3>
+        <h4>Developer</h4>
+        <p class="socials"><i class="fa fa-facebook"></i> <i class="fa fa-twitter"></i> <i class="fa fa-pinterest"></i>
+          <i class="fa fa-linkedin"></i>
+        </p>
+      </div>
+    </div>
+
+    <div class="single-box">
+      <div class="header-area img1"></div>
+      <div class="body-area">
+        <h3>Jeadine Boldios</h3>
+        <h4>Developer</h4>
+        <p class="socials"><i class="fa fa-facebook"></i> <i class="fa fa-twitter"></i> <i class="fa fa-pinterest"></i>
+          <i class="fa fa-linkedin"></i>
+        </p>
+      </div>
+    </div>
+
+    <div class="single-box">
+      <div class="header-area img1"></div>
+      <div class="body-area">
+        <h3>Andre Ivan Conge</h3>
+        <h4>Developer</h4>
+        <p class="socials"><i class="fa fa-facebook"></i> <i class="fa fa-twitter"></i> <i class="fa fa-pinterest"></i>
+          <i class="fa fa-linkedin"></i>
+        </p>
+      </div>
+    </div>
+
+    <div class="single-box">
+      <div class="header-area img1"></div>
+      <div class="body-area">
+        <h3>Gerardo Aquino, Jr.</h3>
+        <h4>Developer</h4>
+        <p class="socials"><i class="fa fa-facebook"></i> <i class="fa fa-twitter"></i> <i class="fa fa-pinterest"></i>
+          <i class="fa fa-linkedin"></i>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks the button, open the modal 
+  btn.onclick = function () {
+    modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+
 </footer>
