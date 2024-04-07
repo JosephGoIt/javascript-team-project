@@ -24,6 +24,7 @@ let totalMovies = 0;
 export function updateMoviesGalleryByStatus(status, pageNumber) {
   console.log(paginationMyLibraryContainer);
   console.log('Render Gallery ');
+  alert('Render Gallery');
 
   paginationMyLibraryContainer.classList.remove('is-hidden');
 

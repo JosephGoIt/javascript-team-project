@@ -5,13 +5,15 @@ import { updateMoviesGalleryByStatus } from './mylibrary_update-details';
 // ---- DECLARATIONS
 
 const refs = {
-  galleryMyLibrary: document.querySelector('.gallery_mylibrary-box'),
+  galleryMyLibraryWatch: document.querySelector('.gallery_watch-box'),
+  galleryMyLibraryQueue: document.querySelector('.gallery_queue-box'),
   watchedBtn: document.querySelector('.watched-btn'),
   queueBtn: document.querySelector('.queue-btn'),
   unselectBtn: document.querySelector('.unselect-btn'),
   paginationMyLibraryContainer: document.querySelector(
     '.pagination-mylibrary_container'
   ),
+  filmModal: document.querySelector('[data-modal]'),
 };
 
 refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
@@ -20,7 +22,8 @@ refs.queueBtn.addEventListener('click', onQueueBtnClick);
 // ----- FUNCTIONS
 
 function onWatchedBtnClick({ target }) {
-  console.log(target.dataset.status);
+  refs.galleryMyLibraryWatch.classList.remove('is-hidden');
+  refs.galleryMyLibraryQueue.classList.add('is-hidden');
   if (target.classList.contains('active')) {
     return;
   }
@@ -31,6 +34,8 @@ function onWatchedBtnClick({ target }) {
 }
 
 function onQueueBtnClick({ target }) {
+  refs.galleryMyLibraryWatch.classList.add('is-hidden');
+  refs.galleryMyLibraryQueue.classList.remove('is-hidden');
   if (target.classList.contains('active')) {
     return;
   }

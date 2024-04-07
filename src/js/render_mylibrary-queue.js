@@ -1,7 +1,7 @@
 import { markupMovies } from './render_mylibrary-film-card';
 
 const refs = {
-  gallery: document.querySelector('.gallery_mylibrary-box'),
+  gallery: document.querySelector('.gallery_queue-box'),
 };
 
 export function renderMyLibraryQueue(userQueue) {
