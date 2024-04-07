@@ -21,7 +21,7 @@ let page = 1;
 
 async function fetchMovies() {
   paginationItemsFetchContainer.classList.remove('is-hidden');
-  paginationItemsSearchContainer.classList.add('is-hidden');
+  //paginationItemsSearchContainer.classList.add('is-hidden');
   try {
     const res = await axios.get(
       `${BASE_URL}/3/trending/movie/day?api_key=${API_KEY}&page=${page}`

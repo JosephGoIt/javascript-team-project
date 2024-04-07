@@ -40,7 +40,7 @@ let query = '';
 
 // ---------- FUNCTION
 async function onSearchMovies(e) {
-  paginationItemsFetchContainer.classList.add('is-hidden');
+  //paginationItemsFetchContainer.classList.add('is-hidden');
   paginationItemsSearchContainer.classList.remove('is-hidden');
 
   e.preventDefault();
