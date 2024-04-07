@@ -8,6 +8,7 @@ const refs = {
   galleryMyLibrary: document.querySelector('.gallery_mylibrary-box'),
   watchedBtn: document.querySelector('.watched-btn'),
   queueBtn: document.querySelector('.queue-btn'),
+  unselectBtn: document.querySelector('.unselect-btn'),
   paginationMyLibraryContainer: document.querySelector(
     '.pagination-mylibrary_container'
   ),

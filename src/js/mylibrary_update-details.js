@@ -56,8 +56,6 @@ export function updateMoviesGalleryByStatus(status, pageNumber) {
     }
   }
   if (status === 'watched') {
-    console.log(currentPage);
-    console.log(totalPages);
     if (!splittedMovieSet.get(currentPage) && currentPage) {
       renderMyLibraryWatched(splittedMovieSet.get(currentPage - 1));
       if (currentPage <= 1) {

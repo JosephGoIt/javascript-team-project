@@ -8,9 +8,6 @@ const libraryFetchEl = document.querySelector('.gallery_fetch-box');
 const paginationItemsFetchContainer = document.querySelector(
   '.pagination-fetch_container'
 );
-const paginationItemsSearchContainer = document.querySelector(
-  '.pagination-search_container'
-);
 
 let BASE_URL = optionsIMDB.specs.baseURL;
 let API_KEY = optionsIMDB.specs.key;

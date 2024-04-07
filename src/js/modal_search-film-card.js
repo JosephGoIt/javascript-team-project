@@ -3,7 +3,12 @@
 import { fetchFilmDetailsById } from './modal_fetch-fim-card-details';
 import noPosterURL from '../images/foto.jpg';
 import closeBtnIcon from '../images/icon/symbol-defs.svg';
-import { dataSaveQueue, dataSaveWatch } from './modal_add-film-card';
+import {
+  dataSaveQueue,
+  dataSaveWatch,
+  removeSaveWatch,
+  removeSaveQueue,
+} from './modal_add-film-card';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 // ----- DECLARATION
@@ -53,13 +58,19 @@ async function onGalleryBoxClick(event) {
 
   const modalButtonsRefs = {
     closeBtn: document.querySelector('[button-modal-close]'),
-    addQueqeBtn: document.querySelector('[button-add-queue]'),
+    addQueueBtn: document.querySelector('[button-add-queue]'),
     addWatchBtn: document.querySelector('[button-add-watch]'),
+    unselectBtn: document.querySelector('[button-unselect]'),
   };
 
+  enableBtn(modalButtonsRefs.unselectBtn);
+
   modalButtonsRefs.closeBtn.addEventListener('click', onCloseModal);
-  modalButtonsRefs.addQueqeBtn.addEventListener('click', onAddQueqeBtn);
+  modalButtonsRefs.addQueueBtn.addEventListener('click', onAddQueueBtn);
   modalButtonsRefs.addWatchBtn.addEventListener('click', onAddWatchBtn);
+  modalButtonsRefs.unselectBtn.addEventListener('click', onUnselectBtn);
+
+  // Check if Movie Watched / Queue
 
   const watchedMovies = getMovies('watched') || [];
   const moviesInQueue = getMovies('queue') || [];
@@ -72,7 +83,7 @@ async function onGalleryBoxClick(event) {
   );
 
   if (isMovieInQueue) {
-    disableBtn(modalButtonsRefs.addQueqeBtn);
+    disableBtn(modalButtonsRefs.addQueueBtn);
   }
 
   if (isMovieWatched) {
@@ -126,7 +137,32 @@ function onEscKeyPress(e) {
   }
 }
 
-function onAddQueqeBtn({ target }) {
+function onUnselectBtn({ target }) {
+  const watchedMovies = getMovies('watched') || [];
+  const moviesInQueue = getMovies('queue') || [];
+
+  const isMovieWatched = watchedMovies.some(
+    movie => movie.id === filmDetails.id
+  );
+
+  const isMovieInQueue = moviesInQueue.some(
+    movie => movie.id === filmDetails.id
+  );
+
+  if (isMovieInQueue) {
+    removeSaveQueue(filmDetails);
+  }
+
+  if (isMovieWatched) {
+    removeSaveWatch(filmDetails);
+  }
+
+  //disableBtn(target);
+  enableBtn(document.querySelector('[button-add-watch]'));
+  enableBtn(document.querySelector('[button-add-queue]'));
+}
+
+function onAddQueueBtn({ target }) {
   dataSaveQueue(filmDetails);
   if (window.location.pathname.includes('my-library')) {
     if (document.querySelector('.watched-btn').classList.contains('active')) {
@@ -137,6 +173,7 @@ function onAddQueqeBtn({ target }) {
   }
   disableBtn(target);
   enableBtn(document.querySelector('[button-add-watch]'));
+  enableBtn(document.querySelector('[button-unselect]'));
 }
 
 function onAddWatchBtn({ target }) {
@@ -150,6 +187,7 @@ function onAddWatchBtn({ target }) {
   }
   disableBtn(target);
   enableBtn(document.querySelector('[button-add-queue]'));
+  enableBtn(document.querySelector('[button-unselect]'));
 }
 
 function getLocalStorageData(key) {
@@ -267,10 +305,14 @@ function createFilmModalMarkup(data) {
             Add to Watched
           </button>
         </li>
-
         <li class="film-button_item">
           <button class="film-button_primary" type="button" button-add-queue>
             Add to Queue
+          </button>
+        </li>
+        <li class="film-button_item">
+          <button class="film-button_primary" type="button" button-unselect>
+            UNSELECT
           </button>
         </li>
       </ul>
