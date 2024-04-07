@@ -4,7 +4,6 @@ import { renderFetchMoviesCard } from './render-fetch-movies-card';
 import axios from 'axios';
 
 const libraryFetchEl = document.querySelector('.gallery_fetch-box');
-const librarySearchEl = document.querySelector('.gallery_search-box');
 
 const paginationItemsFetchContainer = document.querySelector(
   '.pagination-fetch_container'
@@ -17,11 +16,8 @@ let BASE_URL = optionsIMDB.specs.baseURL;
 let API_KEY = optionsIMDB.specs.key;
 let page = 1;
 
-//export { fetchMovies };
-
 async function fetchMovies() {
   paginationItemsFetchContainer.classList.remove('is-hidden');
-  //paginationItemsSearchContainer.classList.add('is-hidden');
   try {
     const res = await axios.get(
       `${BASE_URL}/3/trending/movie/day?api_key=${API_KEY}&page=${page}`
@@ -109,7 +105,6 @@ async function onFetchPaginationClick({ target }) {
 
   let BASE_URL = optionsIMDB.specs.baseURL;
   let API_KEY = optionsIMDB.specs.key;
-  let query = optionsIMDB.specs.query;
   let page = optionsIMDB.specs.page;
 
   console.log(optionsIMDB.specs);
@@ -125,7 +120,6 @@ async function onFetchPaginationClick({ target }) {
     console.log(res.data.results);
 
     renderFetchMoviesCard(res.data.results);
-    //optionsIMDB.specs.totalPages = res.data.total_pages;
     totalPages = optionsIMDB.specs.totalPages;
 
     console.log(optionsIMDB.specs);

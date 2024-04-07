@@ -61,29 +61,29 @@ export function paginationFetch(page, totalPages) {
   });
 }
 
-function onPagination({ target }) {
-  if (target.nodeName !== 'LI') {
-    return;
-  }
+// function onPagination({ target }) {
+//   if (target.nodeName !== 'LI') {
+//     return;
+//   }
 
-  if (target.textContent === '...') {
-    return;
-  }
+//   if (target.textContent === '...') {
+//     return;
+//   }
 
-  if (target.textContent === '🡸') {
-    if (target.classList.contains('disabled')) {
-      return;
-    }
-    globalCurrentPage -= 1;
-    return;
-  }
+//   if (target.textContent === '🡸') {
+//     if (target.classList.contains('disabled')) {
+//       return;
+//     }
+//     globalCurrentPage -= 1;
+//     return;
+//   }
 
-  if (target.textContent === '🡺') {
-    if (target.classList.contains('disabled')) {
-      return;
-    }
-    globalCurrentPage += 1;
-    return;
-  }
-  globalCurrentPage = Number(target.textContent);
-}
+//   if (target.textContent === '🡺') {
+//     if (target.classList.contains('disabled')) {
+//       return;
+//     }
+//     globalCurrentPage += 1;
+//     return;
+//   }
+//   globalCurrentPage = Number(target.textContent);
+// }

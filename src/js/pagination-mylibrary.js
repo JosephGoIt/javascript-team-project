@@ -1,11 +1,11 @@
 const paginationContainer = document.querySelector(
-  '.pagination-search_container'
+  '.pagination-mylibrary_container'
 );
 //paginationContainer.addEventListener('click', onPagination);
 
 window.globalCurrentPage = null;
 
-export function paginationSearch(page, totalPages) {
+export function paginationMyLibrary(page, totalPages) {
   const beforeToPage = page - 2;
   const beforePage = page - 1;
   const afterToPage = page + 2;

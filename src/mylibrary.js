@@ -1,2 +1,2 @@
-// import './js/fetch-movies-mylibrary';
+import './js/mylibrary_fetch-movies';
 import './js/modal_project-team';

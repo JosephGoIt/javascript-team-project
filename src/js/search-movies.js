@@ -35,12 +35,8 @@ const optionError = {
   },
 };
 
-let query = '';
-//let page = 1;
-
 // ---------- FUNCTION
 async function onSearchMovies(e) {
-  //paginationItemsFetchContainer.classList.add('is-hidden');
   paginationItemsSearchContainer.classList.remove('is-hidden');
 
   e.preventDefault();
@@ -174,8 +170,6 @@ async function onSearchPaginationClick({ target }) {
       `${BASE_URL}/3/search/movie?api_key=${API_KEY}&query=${query}&language=en-US&page=${page}&include_adult=false`
     );
 
-    //clearGalleryMarkup();
-
     renderSearchMoviesCard(res.data.results);
     optionsIMDB.specs.totalPages = res.data.total_pages;
     totalPages = optionsIMDB.specs.totalPages;
@@ -197,7 +191,6 @@ async function onSearchPaginationClick({ target }) {
 }
 
 function clearGalleryMarkup() {
-  //libraryFetchEl.innerHTML = '';
   librarySearchEl.innerHTML = '';
 }
 
