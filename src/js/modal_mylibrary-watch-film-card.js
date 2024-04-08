@@ -134,6 +134,7 @@ function onCloseModal() {
   window.removeEventListener('keydown', onEscKeyPress);
   enableScroll();
 
+  // -----   //---- Update Watch Gallery on Close
   updateMoviesGalleryByStatus('watched', globalCurrentPage);
 }
 
@@ -157,15 +158,12 @@ function onUnselectBtn() {
 
   if (isMovieInQueue) {
     removeSaveQueue(filmDetails);
-    //updateMoviesGalleryByStatus(queue);
   }
 
   if (isMovieWatched) {
     removeSaveWatch(filmDetails);
-    //updateMoviesGalleryByStatus(watch);
   }
 
-  //disableBtn(target);
   enableBtn(document.querySelector('[button-add-watch]'));
   enableBtn(document.querySelector('[button-add-queue]'));
 }

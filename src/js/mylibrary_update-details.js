@@ -22,10 +22,6 @@ let totalMovies = 0;
 // ----- FUNCTIONS
 
 export function updateMoviesGalleryByStatus(status, pageNumber) {
-  console.log(paginationMyLibraryContainer);
-  console.log('Render Gallery ');
-  alert('Render Gallery');
-
   paginationMyLibraryContainer.classList.remove('is-hidden');
 
   const data = readLocalStorageData(status);
@@ -44,6 +40,7 @@ export function updateMoviesGalleryByStatus(status, pageNumber) {
   splittedMovieSet = splitSet(movies, MOVIES_PER_PAGE, totalPages);
 
   if (status === 'queue') {
+    alert('ABCDE');
     if (!splittedMovieSet.get(currentPage) && currentPage) {
       renderMyLibraryQueue(splittedMovieSet.get(currentPage - 1));
       if (currentPage <= 1) {
@@ -57,6 +54,7 @@ export function updateMoviesGalleryByStatus(status, pageNumber) {
     }
   }
   if (status === 'watched') {
+    alert('FGHIJK');
     if (!splittedMovieSet.get(currentPage) && currentPage) {
       renderMyLibraryWatched(splittedMovieSet.get(currentPage - 1));
       if (currentPage <= 1) {
