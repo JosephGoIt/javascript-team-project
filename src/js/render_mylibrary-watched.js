@@ -6,7 +6,6 @@ const refs = {
 };
 
 export function renderMyLibraryWatched(userWatched) {
-  alert('renderMyLibraryWatched');
   if (!userWatched || userWatched.length === 0) {
     refs.pageMyLibrary.classList.add('is-hidden');
     refs.gallery.classList.remove('is-hidden');

@@ -5,7 +5,7 @@ import { renderMyLibraryQueue } from './render_mylibrary-queue';
 import { renderMyLibraryWatched } from './render_mylibrary-watched';
 import { readLocalStorageData, deserializeData } from './api/local-storage-API';
 
-const MOVIES_PER_PAGE = 1;
+const MOVIES_PER_PAGE = 20;
 
 const paginationMyLibraryContainer = document.querySelector(
   '.pagination-mylibrary_container'
