@@ -8,11 +8,13 @@ const IMAGE_PATH_W780 = "https://image.tmdb.org/t/p/w780";
 
 const refs = {
   galleryBox: document.querySelector('.gallery-fetch_container'),
+  galleryBox1: document.querySelector('.gallery-search_container'),
   filmModal: document.querySelector('[data-modal]'),
   body: document.querySelector('body'),
 };
 
 refs.galleryBox.addEventListener('click', onGalleryBoxClick);
+refs.galleryBox1.addEventListener('click', onGalleryBoxClick);
 
 async function onGalleryBoxClick(event) {
   event.preventDefault();
