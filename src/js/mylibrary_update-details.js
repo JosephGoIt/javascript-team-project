@@ -5,7 +5,7 @@ import { renderMyLibraryQueue } from './render_mylibrary-queue';
 import { renderMyLibraryWatched } from './render_mylibrary-watched';
 import { readLocalStorageData, deserializeData } from './api/local-storage-API';
 
-const MOVIES_PER_PAGE = 20;
+const MOVIES_PER_PAGE = 1;
 
 const paginationMyLibraryContainer = document.querySelector(
   '.pagination-mylibrary_container'
@@ -40,7 +40,6 @@ export function updateMoviesGalleryByStatus(status, pageNumber) {
   splittedMovieSet = splitSet(movies, MOVIES_PER_PAGE, totalPages);
 
   if (status === 'queue') {
-    alert('ABCDE');
     if (!splittedMovieSet.get(currentPage) && currentPage) {
       renderMyLibraryQueue(splittedMovieSet.get(currentPage - 1));
       if (currentPage <= 1) {
@@ -54,7 +53,6 @@ export function updateMoviesGalleryByStatus(status, pageNumber) {
     }
   }
   if (status === 'watched') {
-    alert('FGHIJK');
     if (!splittedMovieSet.get(currentPage) && currentPage) {
       renderMyLibraryWatched(splittedMovieSet.get(currentPage - 1));
       if (currentPage <= 1) {

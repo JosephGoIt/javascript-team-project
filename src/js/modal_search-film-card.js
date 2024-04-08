@@ -1,6 +1,6 @@
 // ----- IMPORTS
 
-import { fetchFilmDetailsById } from './modal_fetch-fim-card-details';
+import { fetchFilmDetailsById } from './modal_fetch-film-card-details';
 import noPosterURL from '../images/foto.jpg';
 import closeBtnIcon from '../images/icon/symbol-defs.svg';
 import {

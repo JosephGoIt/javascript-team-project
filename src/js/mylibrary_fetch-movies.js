@@ -5,8 +5,8 @@ import { updateMoviesGalleryByStatus } from './mylibrary_update-details';
 // ---- DECLARATIONS
 
 const refs = {
-  galleryMyLibraryWatch: document.querySelector('.gallery_watch-box'),
-  galleryMyLibraryQueue: document.querySelector('.gallery_queue-box'),
+  galleryMyLibraryWatch: document.querySelector('.gallery_watch-block'),
+  galleryMyLibraryQueue: document.querySelector('.gallery_queue-block'),
   watchedBtn: document.querySelector('.watched-btn'),
   queueBtn: document.querySelector('.queue-btn'),
   unselectBtn: document.querySelector('.unselect-btn'),
@@ -34,13 +34,14 @@ function onWatchedBtnClick({ target }) {
 }
 
 function onQueueBtnClick({ target }) {
+  alert('onQueueBtnClick');
   refs.galleryMyLibraryWatch.classList.add('is-hidden');
   refs.galleryMyLibraryQueue.classList.remove('is-hidden');
   if (target.classList.contains('active')) {
     return;
   }
-  refs.queueBtn.classList.add('active');
   refs.watchedBtn.classList.remove('active');
+  refs.queueBtn.classList.add('active');
 
   updateMoviesGalleryByStatus(target.dataset.status);
 }

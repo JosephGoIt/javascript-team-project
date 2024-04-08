@@ -1,6 +1,6 @@
 // ----- IMPORTS
 
-import { fetchFilmDetailsById } from './modal_fetch-fim-card-details';
+import { fetchFilmDetailsById } from './modal_fetch-film-card-details';
 import noPosterURL from '../images/foto.jpg';
 import closeBtnIcon from '../images/icon/symbol-defs.svg';
 import {
@@ -32,7 +32,6 @@ refs.filmModal.addEventListener('click', onBackdropModalClick);
 // ----- FUNCTIONS
 
 async function onGalleryBoxClick(event) {
-  alert('Gallery Watch Box Clicked');
   if (event.target.classList.contains('gallery_queue-box')) {
     return;
   }

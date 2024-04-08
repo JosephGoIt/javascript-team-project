@@ -1,6 +1,6 @@
 // ----- IMPORTS
 
-import { fetchFilmDetailsById } from './modal_fetch-fim-card-details';
+import { fetchFilmDetailsById } from './modal_fetch-film-card-details';
 import noPosterURL from '../images/foto.jpg';
 import closeBtnIcon from '../images/icon/symbol-defs.svg';
 import {
@@ -32,7 +32,6 @@ refs.filmModal.addEventListener('click', onBackdropModalClick);
 // ----- FUNCTIONS
 
 async function onGalleryBoxClick(event) {
-  alert('Gallery Watch Box Clicked');
   if (event.target.classList.contains('gallery_fetch-box')) {
     return;
   }
@@ -186,7 +185,6 @@ function onAddQueueBtn({ target }) {
 }
 
 function onAddWatchBtn({ target }) {
-  alert('10');
   dataSaveWatch(filmDetails);
   if (window.location.pathname.includes('my-library')) {
     if (document.querySelector('.watched-btn').classList.contains('active')) {
@@ -201,8 +199,6 @@ function onAddWatchBtn({ target }) {
   disableBtn(target);
   enableBtn(document.querySelector('[button-add-queue]'));
   enableBtn(document.querySelector('[button-unselect]'));
-
-  //updateMoviesGalleryByStatus(target.dataset.status);
 }
 
 function getLocalStorageData(key) {
