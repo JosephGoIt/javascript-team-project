@@ -34,7 +34,6 @@ function onWatchedBtnClick({ target }) {
 }
 
 function onQueueBtnClick({ target }) {
-  alert('onQueueBtnClick');
   refs.galleryMyLibraryWatch.classList.add('is-hidden');
   refs.galleryMyLibraryQueue.classList.remove('is-hidden');
   if (target.classList.contains('active')) {
