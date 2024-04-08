@@ -1,6 +1,12 @@
+// ----- IMPORTS
+
 import allGenres from './json/genres.json';
 
+// ----- DECLARATIONS
+
 const { genres } = allGenres;
+
+// ----- FUNCTIONS | findGenresOfMovie
 
 export function findGenresOfMovie(ids) {
   const arr = ids.flatMap(id => genres.filter(element => element.id === id));

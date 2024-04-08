@@ -11,7 +11,7 @@ const paginationMyLibraryContainer = document.querySelector(
   '.pagination-mylibrary_container'
 );
 
-// ----- DECLARATION
+// ----- DECLARATIONS
 
 let movies = [];
 let splittedMovieSet;
@@ -19,7 +19,7 @@ let currentPage = 1;
 let totalPages = 0;
 let totalMovies = 0;
 
-// ----- FUNCTIONS
+// ----- FUNCTIONS | updateMoviesGalleryByStatus
 
 export function updateMoviesGalleryByStatus(status, pageNumber) {
   paginationMyLibraryContainer.classList.remove('is-hidden');
@@ -105,31 +105,26 @@ function onWatchedPaginationItemClick({ target }) {
   currentPage = globalCurrentPage;
 
   let watchStatus = 0;
-
   if (
     target.classList.contains('btn-left') &&
     !target.classList.contains('disabled')
   ) {
     watchStatus = 1;
   }
-
   if (
     target.classList.contains('btn-right') &&
     !target.classList.contains('disabled')
   ) {
     watchStatus = 2;
   }
-
   if (!watchStatus) {
     if (target.nodeName === 'UL' || target.classList.contains('disabled')) {
       return;
     }
-
     if (isNaN(Number(target.textContent)) && watchStatus != 0) {
     } else if (isNaN(Number(target.textContent))) {
       return;
     }
-
     if (Number(target.textContent) === globalCurrentPage) {
       return;
     }

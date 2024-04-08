@@ -11,6 +11,5 @@ export const optionsIMDB = {
     page: 1,
     query: '',
     totalPages: 1,
-    unselectBtn: 0,
   },
 };

@@ -1,16 +1,16 @@
 // ----- IMPORT
 
 import { optionsIMDB } from './api/imdb-api';
-//import { uniqBy } from 'lodash';
-import { forEach, omitBy, remove } from 'lodash';
-import { findIndex } from 'lodash';
 
-let unselectBtnStatus = optionsIMDB.specs.unselectBtn;
+// ----- DECLARATIONS
 
-// ----- ADD | WATCH FILM-CARD
+let queueFilms = [];
+let uniqQueueFilms = [];
 
 export let watchFilms = [];
 let uniqFilms = [];
+
+// ----- FUNCTIONS | dataSaveWatch
 
 export const dataSaveWatch = function (data) {
   if (localStorage.watched) {
@@ -33,6 +33,8 @@ export const dataSaveWatch = function (data) {
 
   localStorage.setItem('watched', JSON.stringify(uniqFilms));
 };
+
+// ----- FUNCTIONS | removeSaveWatch
 
 export const removeSaveWatch = function (data) {
   if (localStorage.watched) {
@@ -64,10 +66,7 @@ export const removeSaveWatch = function (data) {
   localStorage.setItem('watched', JSON.stringify(uniqFilms));
 };
 
-// ----- ADD | QUEUE FILM-CARD
-
-let queueFilms = [];
-let uniqQueueFilms = [];
+// ----- FUNCTIONS | dataSaveQueue
 
 export const dataSaveQueue = function (data) {
   if (localStorage.queue) {
@@ -92,6 +91,8 @@ export const dataSaveQueue = function (data) {
   localStorage.setItem('queue', JSON.stringify(uniqQueueFilms));
   //}
 };
+
+// ----- FUNCTIONS | removeSaveQueue
 
 export const removeSaveQueue = function (data) {
   if (localStorage.queue) {
@@ -124,6 +125,9 @@ export const removeSaveQueue = function (data) {
   localStorage.setItem('queue', JSON.stringify(uniqQueueFilms));
   //}
 };
+
+// ----- FUNCTIONS | uniqBy
+
 const uniqBy = (arr, predicate) => {
   const cb = typeof predicate === 'function' ? predicate : o => o[predicate];
 

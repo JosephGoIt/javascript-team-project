@@ -19,7 +19,7 @@ const refs = {
 refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
 refs.queueBtn.addEventListener('click', onQueueBtnClick);
 
-// ----- FUNCTIONS
+// ----- FUNCTIONS | onWatchedBtnClick
 
 function onWatchedBtnClick({ target }) {
   refs.galleryMyLibraryWatch.classList.remove('is-hidden');
@@ -32,6 +32,8 @@ function onWatchedBtnClick({ target }) {
 
   updateMoviesGalleryByStatus(target.dataset.status);
 }
+
+// ----- FUNCTIONS | onQueueBtnClick
 
 function onQueueBtnClick({ target }) {
   refs.galleryMyLibraryWatch.classList.add('is-hidden');

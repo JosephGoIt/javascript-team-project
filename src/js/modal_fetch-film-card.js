@@ -11,7 +11,10 @@ import {
 } from './modal_add-film-card';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
-// ----- DECLARATION
+// ----- DECLARATIONS
+
+let filmDetails = {};
+const cache = [];
 
 const refs = {
   galleryFetchBox: document.querySelector('.gallery_fetch-box'),
@@ -19,15 +22,7 @@ const refs = {
   body: document.querySelector('body'),
 };
 
-let filmDetails = {};
-const cache = [];
-
-// ----- EVENT LISTENERS
-
-refs.galleryFetchBox.addEventListener('click', onGalleryBoxClick);
-refs.filmModal.addEventListener('click', onBackdropModalClick);
-
-// ----- FUNCTIONS
+// ----- FUNCTIONS | onGalleryBoxClick
 
 async function onGalleryBoxClick(event) {
   if (event.target.classList.contains('gallery_fetch-box')) {
@@ -37,8 +32,6 @@ async function onGalleryBoxClick(event) {
   const filmId = Number(event.target.closest('.card').id);
 
   let cachedFilmDetails = cache.find(film => film.id === filmId);
-
-  // ----- DECLARATION | API/CACHE
 
   if (cachedFilmDetails) {
     filmDetails = cachedFilmDetails;
@@ -322,3 +315,8 @@ function createFilmModalMarkup(data) {
   </div>
 `;
 }
+
+// ----- EVENT LISTENERS
+
+refs.galleryFetchBox.addEventListener('click', onGalleryBoxClick);
+refs.filmModal.addEventListener('click', onBackdropModalClick);

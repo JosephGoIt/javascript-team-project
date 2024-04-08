@@ -27,7 +27,7 @@ const cache = [];
 refs.gallerySearchBox.addEventListener('click', onGalleryBoxClick);
 refs.filmModal.addEventListener('click', onBackdropModalClick);
 
-// ----- FUNCTIONS
+// ----- FUNCTIONS | onGalleryBoxClick
 
 async function onGalleryBoxClick(event) {
   if (event.target.classList.contains('gallery_search-box')) {
@@ -37,8 +37,6 @@ async function onGalleryBoxClick(event) {
   const filmId = Number(event.target.closest('.card').id);
 
   let cachedFilmDetails = cache.find(film => film.id === filmId);
-
-  // ----- DECLARATION | API/CACHE
 
   if (cachedFilmDetails) {
     filmDetails = cachedFilmDetails;
@@ -93,6 +91,8 @@ async function onGalleryBoxClick(event) {
   onOpenModal();
   window.addEventListener('keydown', onEscKeyPress);
 }
+
+// ----- FUNCTIONS
 
 function renderFilmModal(data) {
   const filmModalMarkup = createFilmModalMarkup(data);

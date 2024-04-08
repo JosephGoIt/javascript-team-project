@@ -1,9 +1,12 @@
+// ----- DECLARATiONS
+
 const paginationContainer = document.querySelector(
   '.pagination-fetch_container'
 );
-//paginationContainer.addEventListener('click', onPagination);
 
 window.globalCurrentPage = null;
+
+// ----- FUNCTIONS | paginationFetch
 
 export function paginationFetch(page, totalPages) {
   const beforeToPage = page - 2;
@@ -60,30 +63,3 @@ export function paginationFetch(page, totalPages) {
     }
   });
 }
-
-// function onPagination({ target }) {
-//   if (target.nodeName !== 'LI') {
-//     return;
-//   }
-
-//   if (target.textContent === '...') {
-//     return;
-//   }
-
-//   if (target.textContent === '🡸') {
-//     if (target.classList.contains('disabled')) {
-//       return;
-//     }
-//     globalCurrentPage -= 1;
-//     return;
-//   }
-
-//   if (target.textContent === '🡺') {
-//     if (target.classList.contains('disabled')) {
-//       return;
-//     }
-//     globalCurrentPage += 1;
-//     return;
-//   }
-//   globalCurrentPage = Number(target.textContent);
-// }

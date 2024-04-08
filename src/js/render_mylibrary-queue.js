@@ -1,3 +1,5 @@
+// ----- DECLARATIONS
+
 import { markupMovies } from './render_mylibrary-film-card';
 
 const refs = {
@@ -6,8 +8,9 @@ const refs = {
   pageMyLibrary: document.querySelector('.pagination-mylibrary_container'),
 };
 
+// ----- FUNCTIONS | renderMyLibraryQueue
+
 export function renderMyLibraryQueue(userQueue) {
-  console.log(userQueue);
   if (!userQueue || userQueue.length === 0) {
     refs.pageMyLibrary.classList.add('is-hidden');
     refs.gallerySection.classList.remove('is-hidden');

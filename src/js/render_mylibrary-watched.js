@@ -1,10 +1,16 @@
+// ----- IMPORTS
+
 import { markupMovies } from './render_mylibrary-film-card';
+
+// ----- DECLARATIONS
 
 const refs = {
   gallery: document.querySelector('.gallery_watch-box'),
   gallerySection: document.querySelector('.gallery_watch-block'),
   pageMyLibrary: document.querySelector('.pagination-mylibrary_container'),
 };
+
+// ----- FUNCTIONS | renderMyLibraryWatched
 
 export function renderMyLibraryWatched(userWatched) {
   if (!userWatched || userWatched.length === 0) {

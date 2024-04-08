@@ -1,13 +1,12 @@
+// ----- IMPORTS
+
 import { findGenresOfMovie } from './find-genre';
 import img from '../images/foto.jpg';
 const librarySearchEl = document.querySelector('.gallery_search-box');
 
-export { renderSearchMoviesCard };
+// ----- FUNCTIONS | renderSearchMoviesCard
 
 function renderSearchMoviesCard(movies) {
-  console.log(`Search Movies | Rendering Movie Cards`);
-  console.log(movies);
-
   librarySearchEl.innerHTML = '';
   const markup = movies
     .map(movie => {
@@ -38,3 +37,5 @@ function renderSearchMoviesCard(movies) {
 
   librarySearchEl.insertAdjacentHTML('beforeend', markup);
 }
+
+export { renderSearchMoviesCard };

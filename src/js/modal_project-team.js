@@ -1,3 +1,5 @@
+// ----- DECLARATIONS
+
 const groupModalButton = document.querySelector(`.team-modal`);
 const closeModalButton = document.querySelector(`.group-button`);
 const backdrop = document.querySelector(`.backdrop`);
@@ -6,6 +8,8 @@ const body = document.querySelector('body');
 groupModalButton.addEventListener(`click`, onOpenModal);
 closeModalButton.addEventListener(`click`, onCloseModal);
 backdrop.addEventListener(`click`, onClickBackdrop);
+
+// ----- FUNCTIONS
 
 function onOpenModal() {
   scrollOff();
