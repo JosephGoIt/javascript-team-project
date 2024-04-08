@@ -133,6 +133,8 @@ function onCloseModal() {
   refs.filmModal.classList.add('is-hidden');
   window.removeEventListener('keydown', onEscKeyPress);
   enableScroll();
+
+  updateMoviesGalleryByStatus('watched', globalCurrentPage);
 }
 
 function onEscKeyPress(e) {
@@ -141,7 +143,7 @@ function onEscKeyPress(e) {
   }
 }
 
-function onUnselectBtn({ target }) {
+function onUnselectBtn() {
   const watchedMovies = getMovies('watched') || [];
   const moviesInQueue = getMovies('queue') || [];
 
@@ -166,8 +168,6 @@ function onUnselectBtn({ target }) {
   //disableBtn(target);
   enableBtn(document.querySelector('[button-add-watch]'));
   enableBtn(document.querySelector('[button-add-queue]'));
-
-  updateMoviesGalleryByStatus('watch');
 }
 
 function onAddQueueBtn({ target }) {
