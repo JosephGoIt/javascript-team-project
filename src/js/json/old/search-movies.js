@@ -1,8 +1,8 @@
 // ---------- IMPORTS
 
-import { optionsIMDB } from './api/imdb-api';
-import { paginationSearch } from './pagination-search';
-import { renderSearchMoviesCard } from './render-search-movies-card';
+import { optionsIMDB } from '../../api/imdb-api';
+import { paginationSearch } from '../../pagination-search';
+import { renderSearchMoviesCard } from '../../render-search-movies-card';
 
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-aio.js';
@@ -59,11 +59,12 @@ async function onSearchMovies(e) {
     );
 
     if (res.data.results.length === 0) {
-      Notify.failure(
-        'Search result not successful. Enter the correct movie name.'
-      );
-      searchInputEl.value = '';
-      initializeParam();
+      alert('Search Error');
+
+      // Notify.failure(
+      //   'Search result not successful. Enter the correct movie name.'
+      // );
+      onResultSearchError();
     } else {
       libraryFetchEl.innerHTML = '';
       paginationItemsFetchContainer.innerHTML = '';
@@ -91,6 +92,7 @@ function initializeParam() {
 }
 
 function onResultSearchError() {
+  searchInputEl.value = '';
   Notiflix.Notify.failure(
     'Search result not successful. Enter the correct movie name.',
     optionError

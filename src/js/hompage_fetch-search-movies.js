@@ -5,7 +5,9 @@ import { paginationFetch } from './pagination-fetch';
 import { paginationSearch } from './pagination-search';
 import { renderFetchMoviesCard } from './render-fetch-movies-card';
 import { renderSearchMoviesCard } from './render-search-movies-card';
+
 import axios from 'axios';
+import { Notify } from 'notiflix/build/notiflix-aio.js';
 
 // ----- DECLARATIONS | Fetch
 
@@ -30,8 +32,6 @@ const libraryFetchEl = document.querySelector('.gallery_fetch-box');
 const librarySearchEl = document.querySelector('.gallery_search-box');
 const searchInputEl = document.querySelector('input[name="searchQuery"]');
 const searchFormEl = document.getElementById('search-form');
-
-console.log(libraryFetchEl);
 
 const optionError = {
   width: '390px',
@@ -158,61 +158,74 @@ async function onFetchPaginationClick({ target }) {
 async function onSearchMovies(e) {
   e.preventDefault();
 
-  alert('Search');
-
   refs.galleryFetchContainer.classList.add('is-hidden');
   refs.gallerySearchContainer.classList.remove('is-hidden');
   refs.paginationItemsFetchContainer.classList.add('is-hidden');
-  refs.paginationItemsSearchContainer.classList.remove('is-hidden');
 
   optionsIMDB.specs.query = searchInputEl.value.trim();
+  console.log(optionsIMDB.specs.query);
   if (optionsIMDB.specs.query === '') {
-    librarySearchEl.innerHTML = `<h1 style="font-size=80px">Sorry, search not successful</h1>`;
+    alert('a');
+    onResultSearchError();
     return;
   } else if (optionsIMDB.specs.query !== undefined) {
+    alert('b');
     initializeParam();
-  }
 
-  let BASE_URL = optionsIMDB.specs.baseURL;
-  let API_KEY = optionsIMDB.specs.key;
-  let query = optionsIMDB.specs.query;
-  let page = optionsIMDB.specs.page;
+    let BASE_URL = optionsIMDB.specs.baseURL;
+    let API_KEY = optionsIMDB.specs.key;
+    let query = optionsIMDB.specs.query;
+    let page = optionsIMDB.specs.page;
 
-  try {
-    const res = await axios.get(
-      `${BASE_URL}/3/search/movie?api_key=${API_KEY}&query=${query}&language=en-US&page=${page}&include_adult=false`
-    );
-
-    if (res.data.results.length === 0) {
-      Notify.failure(
-        'Search result not successful. Enter the correct movie name.'
+    try {
+      const res = await axios.get(
+        `${BASE_URL}/3/search/movie?api_key=${API_KEY}&query=${query}&language=en-US&page=${page}&include_adult=false`
       );
-      searchInputEl.value = '';
-      initializeParam();
-    } else {
-      libraryFetchEl.innerHTML = '';
-      refs.paginationItemsFetchContainer.innerHTML = '';
-      clearGalleryMarkup();
 
-      renderSearchMoviesCard(res.data.results);
+      if (res.data.results.length === 0) {
+        Notify.failure('No entries found. Please input again in search form.');
+        initializeParam();
+        alert(1);
+      } else {
+        alert(2);
+        libraryFetchEl.innerHTML = '';
+        refs.paginationItemsFetchContainer.innerHTML = '';
+        refs.paginationItemsSearchContainer.classList.remove('is-hidden');
+        clearGalleryMarkup();
 
-      optionsIMDB.specs.totalPages = res.data.total_pages;
-      totalPages = optionsIMDB.specs.totalPages;
+        renderSearchMoviesCard(res.data.results);
 
-      refs.paginationItemsSearchContainer.addEventListener(
-        'click',
-        onSearchPaginationClick
-      );
-      paginationSearch(optionsIMDB.specs.page, optionsIMDB.specs.totalPages);
+        optionsIMDB.specs.totalPages = res.data.total_pages;
+        totalPages = optionsIMDB.specs.totalPages;
+
+        refs.paginationItemsSearchContainer.addEventListener(
+          'click',
+          onSearchPaginationClick
+        );
+        paginationSearch(optionsIMDB.specs.page, optionsIMDB.specs.totalPages);
+      }
+      return res;
+    } catch (error) {
+      Notify.failure(error);
     }
-    return res;
-  } catch (error) {
-    Notify.failure(error);
   }
 }
 
 function initializeParam() {
+  searchInputEl.value = '';
   optionsIMDB.specs.page = 1;
+}
+
+function onResultSearchError() {
+  librarySearchEl.innerHTML = `<h1 style="font-size=80px">Search result not successful. <br>Enter the correct movie name.</h1>`;
+  Notiflix.Report.failure(
+    'Search Failure',
+    'Search result not successful. Enter the correct movie name.',
+    'Okay'
+  );
+  searchInputEl.value = '';
+  refs.paginationItemsSearchContainer.classList.add('is-hidden');
+  initializeParam();
 }
 
 async function onSearchPaginationClick({ target }) {
