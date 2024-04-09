@@ -3,11 +3,12 @@
 import { optionsIMDB } from './api/imdb-api';
 import { paginationFetch } from './pagination-fetch';
 import { paginationSearch } from './pagination-search';
-import { renderFetchMoviesCard } from './render-fetch-movies-card';
-import { renderSearchMoviesCard } from './render-search-movies-card';
 
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-aio.js';
+
+import { findGenresOfMovie } from './find-genre';
+import img from '../images/foto.jpg';
 
 // ----- DECLARATIONS | Fetch
 
@@ -153,6 +154,37 @@ async function onFetchPaginationClick({ target }) {
   paginationFetch(optionsIMDB.specs.page, optionsIMDB.specs.totalPages);
 }
 
+function renderFetchMoviesCard(movies) {
+  const markup = movies
+    .map(movie => {
+      const { poster_path, title, genre_ids, release_date, id } = movie;
+      const date = new Date(release_date).getFullYear();
+      if (poster_path) {
+        return `
+            <div class="card" id="${id}">
+                <img class="card_img" src="https://image.tmdb.org/t/p/w400${poster_path}" alt="${title}" />
+                <p class="card_title"> ${title} <br />
+                    <span class="card_text">${findGenresOfMovie(
+                      genre_ids
+                    )} | ${date}</span>
+                </p>
+            </div>`;
+      }
+      return `
+            <div class="card" id="${id}">
+                <img class="card_img"  src="${img}" alt="${title}" />
+                <p class="card_titel"> ${title} <br />
+                    <span class="card_text">${findGenresOfMovie(
+                      genre_ids
+                    )} | ${date}</span>
+                </p>
+            </div>`;
+    })
+    .join('');
+
+  libraryFetchEl.insertAdjacentHTML('beforeend', markup);
+}
+
 // ----- FUNCTIONS | Search Movies
 
 async function onSearchMovies(e) {
@@ -165,11 +197,9 @@ async function onSearchMovies(e) {
   optionsIMDB.specs.query = searchInputEl.value.trim();
   console.log(optionsIMDB.specs.query);
   if (optionsIMDB.specs.query === '') {
-    alert('a');
     onResultSearchError();
     return;
   } else if (optionsIMDB.specs.query !== undefined) {
-    alert('b');
     initializeParam();
 
     let BASE_URL = optionsIMDB.specs.baseURL;
@@ -185,9 +215,7 @@ async function onSearchMovies(e) {
       if (res.data.results.length === 0) {
         Notify.failure('No entries found. Please input again in search form.');
         initializeParam();
-        alert(1);
       } else {
-        alert(2);
         libraryFetchEl.innerHTML = '';
         refs.paginationItemsFetchContainer.innerHTML = '';
         refs.paginationItemsSearchContainer.classList.remove('is-hidden');
@@ -305,6 +333,38 @@ async function onSearchPaginationClick({ target }) {
 
 function clearGalleryMarkup() {
   libraryFetchEl.innerHTML = '';
+}
+
+function renderSearchMoviesCard(movies) {
+  librarySearchEl.innerHTML = '';
+  const markup = movies
+    .map(movie => {
+      const { poster_path, title, genre_ids, release_date, id } = movie;
+      const date = new Date(release_date).getFullYear();
+      if (poster_path) {
+        return `
+            <div class="card" id="${id}">
+                <img class="card_img" src="https://image.tmdb.org/t/p/w400${poster_path}" alt="${title}" />
+                <p class="card_title"> ${title} <br />
+                    <span class="card_text">${findGenresOfMovie(
+                      genre_ids
+                    )} | ${date}</span>
+                </p>
+            </div>`;
+      }
+      return `
+            <div class="card" id="${id}">
+                <img class="card_img"  src="${img}" alt="${title}" />
+                <p class="card_titel"> ${title} <br />
+                    <span class="card_text">${findGenresOfMovie(
+                      genre_ids
+                    )} | ${date}</span>
+                </p>
+            </div>`;
+    })
+    .join('');
+
+  librarySearchEl.insertAdjacentHTML('beforeend', markup);
 }
 
 // ----- FUNCTION | Run Program

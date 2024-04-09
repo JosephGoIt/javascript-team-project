@@ -1,6 +1,6 @@
 // ----- IMPORTS
 
-import { findGenresOfMovie } from './find-genre';
+import { findGenresOfMovie } from '../../find-genre';
 import img from '../images/foto.jpg';
 const librarySearchEl = document.querySelector('.gallery_search-box');
 

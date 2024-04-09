@@ -4,5 +4,3 @@ import './js/modal_search-film-card';
 import './js/modal_fetch-film-card';
 
 import './js/hompage_fetch-search-movies';
-//import './js/search-movies';
-//import './js/fetch-movies';
