@@ -18,8 +18,20 @@ const refs = {
 
 // ----- EVENT LISTENERS
 
+uponStart();
 refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
 refs.queueBtn.addEventListener('click', onQueueBtnClick);
+
+// ----- FUNCTIONS | uponStart
+function uponStart() {
+  refs.galleryMyLibraryWatch.classList.remove('is-hidden');
+  refs.galleryMyLibraryQueue.classList.add('is-hidden');
+
+  refs.watchedBtn.classList.add('active');
+  refs.queueBtn.classList.remove('active');
+
+  updateMoviesGalleryByStatus('watched');
+}
 
 // ----- FUNCTIONS | onWatchedBtnClick
 

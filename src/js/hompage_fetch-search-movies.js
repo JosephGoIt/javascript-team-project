@@ -1,4 +1,4 @@
-// ----- IMPORTS
+// ----- IMPORTS | Fetch-Search
 
 import { optionsIMDB } from './api/imdb-api';
 import { paginationFetch } from './pagination-fetch';
