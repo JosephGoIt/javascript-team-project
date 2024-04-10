@@ -24,6 +24,11 @@ const refs = {
 let filmDetails = {};
 const cache = [];
 
+// ----- EVENT LISTENERS
+
+refs.galleryWatchBox.addEventListener('click', onGalleryBoxClick);
+refs.filmModal.addEventListener('click', onBackdropModalClick);
+
 // ----- FUNCTIONS | onGalleryBoxClick
 
 async function onGalleryBoxClick(event) {
@@ -327,8 +332,3 @@ function createFilmModalMarkup(data) {
   </div>
 `;
 }
-
-// ----- EVENT LISTENERS
-
-refs.galleryWatchBox.addEventListener('click', onGalleryBoxClick);
-refs.filmModal.addEventListener('click', onBackdropModalClick);

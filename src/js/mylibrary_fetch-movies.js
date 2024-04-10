@@ -16,6 +16,11 @@ const refs = {
   filmModal: document.querySelector('[data-modal]'),
 };
 
+// ----- EVENT LISTENERS
+
+refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
+refs.queueBtn.addEventListener('click', onQueueBtnClick);
+
 // ----- FUNCTIONS | onWatchedBtnClick
 
 function onWatchedBtnClick({ target }) {
@@ -43,8 +48,3 @@ function onQueueBtnClick({ target }) {
 
   updateMoviesGalleryByStatus(target.dataset.status);
 }
-
-// ----- EVENT LISTENERS
-
-refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
-refs.queueBtn.addEventListener('click', onQueueBtnClick);
