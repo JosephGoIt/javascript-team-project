@@ -1,0 +1,92 @@
+/* Prevents interface shift due to scrollbar render by browser */
+html {
+    overflow-y: scroll;
+}
+
+/* Endless background color */
+.endless-bg-color {
+    background-color: #000;
+    /* Change to desired dark color */
+}
+
+/* Logo */
+.logo {
+    position: absolute;
+    top: 46px;
+
+    /* Apply flex layout on tablets and larger screens */
+    @media screen and (min-width: 768px) {
+        display: flex;
+        align-items: baseline;
+    }
+
+    text-decoration: none;
+    color: #000;
+    /* Change to desired SVG color */
+    cursor: pointer;
+}
+
+.logo__icon {
+
+    /* Margin only applies on tablets and larger screens */
+    @media screen and (min-width: 768px) {
+        margin-right: 10px;
+    }
+}
+
+.logo__name {
+
+    /* Hide on screens smaller than tablets */
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+
+    font-family: Arial,
+    sans-serif;
+    /* Change to desired font family */
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.16;
+    color: #fff;
+    /* Change to desired text color */
+}
+
+/* Side navigation */
+.side-nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+    font-family: Arial, sans-serif;
+    /* Change to desired font family */
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.17;
+    text-transform: uppercase;
+    color: #fff;
+    /* Change to desired text color */
+}
+
+.side-nav__item:first-child {
+    margin-right: 39px;
+}
+
+.side-nav__link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.side-nav__link--current-page {
+    position: relative;
+}
+
+/* Style for the indicator of current page */
+.side-nav__link--current-page::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background-color: #ff0000;
+    /* Change to desired accent color */
+}

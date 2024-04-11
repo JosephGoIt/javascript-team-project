@@ -1,25 +1,37 @@
-<header class="page-header">
-  <div class="header-container">
-    <nav class="header-nav">
-      <a href="./index.html" class="logo">
-        <svg class="logo-svg" width="24" height="24">
-          <use href="./images/icon/symbol-defs.svg#icon-logo"></use>
-        </svg>
-        <span class="logo-text">Filmoteka </span></a
-      >
-      <ul class="nav-list">
-        <li class="nav-list-item">
-          <a href="./index.html" class="nav-list-link current">Home</a>
-        </li>
-        <li class="nav-list-item">
-          <a href="./index.html" class="nav-list-link">my library</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-  <button class="scroll-to-top scroll-to-top--hidden">
-    <svg height="14" width="14">
-      <use href="./images/icon/sprite.svg#icon-scroll"></use>
-    </svg>
-  </button>
-</header>
+<div class="endless-bg-color">
+    <header class="header-bg">
+        <div class="container">
+            <div class="header-section">
+                <nav class="navigation">
+                    <a class="navigation__logo logo js-main-logo">
+                        <svg class="logo__icon" width="24" height="24">
+                            <use href="/images/sprite.svg#logo"></use>
+                        </svg>
+                        <span class="logo__name">Filmoteka</span>
+                    </a>
+
+                    <ul class="side-nav">
+                        <li class="side-nav__item">
+                            <a href="" class="side-nav__link side-nav__link--current-page home">Home</a>
+                        </li>
+                        <li class="side-nav__item">
+                            <a href="/library.html" class="side-nav__link library">My library</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <form class="search-form" id="search-form">
+                    <input type="text" name="query" autocomplete="off" placeholder="Movie search"
+                        class="search-field" />
+                    <button type="submit" class="search-btn">
+                        <svg class="search-icon" width="12" height="12">
+                            <use href="./images/sprite.svg#icon-search"></use>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+            <div class="js-warning header-warning"></div>
+            <div class="js-search-results header-warning"></div>
+        </div>
+    </header>
+</div>
