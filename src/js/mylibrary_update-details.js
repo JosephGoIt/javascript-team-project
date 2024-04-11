@@ -1,8 +1,10 @@
 // ----- IMPORTS
 
-import { paginationMyLibrary } from './pagination-mylibrary';
+import { paginationMyLibrary } from './pagination';
 import { renderMyLibraryQueue } from './render_mylibrary-queue';
 import { renderMyLibraryWatched } from './render_mylibrary-watched';
+// import { renderMyLibraryWatched } from './render_mylibrary';
+// import { renderMyLibraryQueue } from './render_mylibrary';
 import { readLocalStorageData, deserializeData } from './api/local-storage-API';
 
 const MOVIES_PER_PAGE = 20;
