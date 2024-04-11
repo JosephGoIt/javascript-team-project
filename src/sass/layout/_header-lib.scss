@@ -1,0 +1,125 @@
+/* Wrappers */
+.header-section-lib {
+    padding-top: 58px;
+}
+
+/* Background */
+.header-bg-lib {
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 230px;
+    background-color: #000000;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    /* Mobile */
+    max-width: 100%;
+    /* Change to desired max width */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url(../images/header-bg-lib-mobile.jpg);
+
+    /* High-resolution mobile screens */
+    @media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+    screen and (min-width: 768px) and (min-resolution: 192dpi),
+    screen and (min-width: 768px) and (min-resolution: 2dppx) {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+            url(../images/header-bg-lib-mobile@2x.jpg);
+    }
+
+    /* Tablet */
+    @media screen and (min-width: 768px) {
+        max-width: 768px;
+        /* Change to desired max width for tablets */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+            url(../images/header-bg-lib-tablet.jpg);
+
+        /* High-resolution tablet screens */
+        @media screen and (max-width: 1023px) and (min-device-pixel-ratio: 2),
+        screen and (max-width: 1023px) and (min-resolution: 192dpi),
+        screen and (max-width: 1023px) and (min-resolution: 2dppx) {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+                url(../images/header-bg-lib-tablet@2x.jpg);
+        }
+    }
+
+    /* Desktop */
+    @media screen and (min-width: 1024px) {
+        max-width: 1024px;
+        /* Change to desired max width for desktop */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+            url(../images/header-bg-lib-desktop.jpg);
+
+        /* High-resolution desktop screens */
+        @media screen and (min-device-pixel-ratio: 2),
+        screen and (min-resolution: 192dpi),
+        screen and (min-resolution: 2dppx) {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+                url(../images/header-bg-lib-desktop@2x.jpg);
+        }
+    }
+}
+
+/* Storage radio buttons */
+.storage {
+    display: flex;
+    justify-content: space-between;
+
+    /* Tablet and larger */
+    @media screen and (min-width: 768px) {
+        justify-content: center;
+    }
+}
+
+.storage__item:first-child {
+
+    /* Margin applies only on tablets and larger */
+    @media screen and (min-width: 768px) {
+        margin-right: 15px;
+    }
+}
+
+.storage__btn {
+    display: block;
+    padding-top: 14px;
+    padding-bottom: 12px;
+    min-width: 130px;
+
+    /* Tablet and larger */
+    @media screen and (min-width: 768px) {
+        min-width: 136px;
+    }
+
+    text-align: center;
+    font-family: Arial,
+    sans-serif;
+    /* Change to desired font family */
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    text-transform: uppercase;
+    color: #ffffff;
+    /* Change to desired text color */
+    cursor: pointer;
+    border: 1px solid #ffffff;
+    /* Change to desired border color */
+    border-radius: 5px;
+    transition: background-color 0.3s,
+    border 0.3s;
+    /* Include transition */
+
+    /* For checked state */
+    &.storage__input:checked~& {
+        background-color: #ff0000;
+        /* Change to desired accent color */
+        border: 1px solid #ff0000;
+        /* Change to desired accent color */
+        color: #ffffff;
+        /* Change to desired text color */
+    }
+}
+
+/* Navigation */
+.side-nav--lib {
+    margin-bottom: 51px;
+}

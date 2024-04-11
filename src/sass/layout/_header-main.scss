@@ -1,0 +1,164 @@
+/* Wrappers */
+.header-section {
+  padding-top: 58px;
+}
+
+/* Background */
+.header-bg {
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 230px;
+  background-color: #000000;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* Mobile */
+  max-width: 100%;
+  /* Adjust as needed */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header-bg-main-mobile.jpg);
+
+  /* High-resolution mobile screens */
+  @media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 768px) and (min-resolution: 192dpi),
+  screen and (min-width: 768px) and (min-resolution: 2dppx) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header-bg-main-mobile@2x.jpg);
+  }
+
+  /* Tablet */
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+    /* Adjust as needed */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header-bg-main-tablet.jpg);
+
+    /* High-resolution tablet screens */
+    @media screen and (max-width: 1023px) and (min-device-pixel-ratio: 2),
+    screen and (max-width: 1023px) and (min-resolution: 192dpi),
+    screen and (max-width: 1023px) and (min-resolution: 2dppx) {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header-bg-main-tablet@2x.jpg);
+    }
+  }
+
+  /* Desktop */
+  @media screen and (min-width: 1024px) {
+    max-width: 1024px;
+    /* Adjust as needed */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header-bg-main-desktop.jpg);
+
+    /* High-resolution desktop screens */
+    @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header-bg-main-desktop@2x.jpg);
+    }
+  }
+}
+
+/* Form */
+.search-form {
+  position: relative;
+  text-align: center;
+}
+
+.search-field {
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.14;
+
+  /* Tablet */
+  @media screen and (min-width: 768px) {
+    width: 336px;
+    /* Adjust as needed */
+  }
+
+  background-color: transparent;
+  border: transparent;
+  border-bottom: 1px solid #ffffff;
+  /* Adjust color as needed */
+  font-family: Arial,
+  sans-serif;
+  /* Adjust font family as needed */
+  color: #ffffff;
+  /* Adjust color as needed */
+  transition: border-bottom 0.3s;
+  /* Include transition */
+
+  &::placeholder {
+    color: #ffffff;
+    /* Adjust color as needed */
+    transition: color 0.3s;
+    /* Include transition */
+  }
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid #ff0000;
+    /* Adjust color as needed */
+
+    &::placeholder {
+      color: #ff0000;
+      /* Adjust color as needed */
+    }
+  }
+}
+
+.search-btn {
+  // position: absolute;
+  top: 0;
+  right: 0;
+
+  /* Tablet */
+  @media screen and (min-width: 768px) {
+    right: 142px;
+    /* Adjust position as needed */
+  }
+
+  /* Desktop */
+  @media screen and (min-width: 1024px) {
+    right: 273px;
+    /* Adjust position as needed */
+  }
+
+  padding: 0;
+  background-color: transparent;
+  border: transparent;
+  color: #ffffff;
+  /* Adjust color as needed */
+  transition: color 0.3s;
+  /* Include transition */
+
+  .search-field:focus~& {
+    color: #ff0000;
+    /* Adjust color as needed */
+  }
+}
+
+/* Warning */
+.header-warning {
+  position: absolute;
+  top: 155px;
+  font-size: 14px;
+  line-height: 1.14;
+  color: #ff0000;
+  /* Adjust color as needed */
+
+  /* Mobile */
+  @media screen and (max-width: 767px) {
+    max-width: calc(100% - 40px);
+    /* Adjust max-width as needed */
+  }
+
+  /* Tablet */
+  @media screen and (min-width: 768px) {
+    width: calc(100% - 152px);
+    /* Adjust width as needed */
+    text-align: center;
+  }
+
+  /* Desktop */
+  @media screen and (min-width: 1024px) {
+    width: calc(100% - 142px);
+    /* Adjust width as needed */
+    text-align: center;
+  }
+}
